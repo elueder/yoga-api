@@ -15,7 +15,7 @@ class PosesController < ProtectedController
 
   # POST /poses
   def create
-    @pose = Pose.new(pose_params)
+    @pose = current_user.poses.build(pose_params)
 
     if @pose.save
       render json: @pose, status: :created
