@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180702203925) do
+ActiveRecord::Schema.define(version: 20180703181757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,8 +39,10 @@ ActiveRecord::Schema.define(version: 20180702203925) do
     t.integer "order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["pose_id"], name: "index_sequence_poses_on_pose_id"
     t.index ["sequence_id"], name: "index_sequence_poses_on_sequence_id"
+    t.index ["user_id"], name: "index_sequence_poses_on_user_id"
   end
 
   create_table "sequences", force: :cascade do |t|
@@ -64,4 +66,5 @@ ActiveRecord::Schema.define(version: 20180702203925) do
   add_foreign_key "poses", "users"
   add_foreign_key "sequence_poses", "poses"
   add_foreign_key "sequence_poses", "sequences"
+  add_foreign_key "sequence_poses", "users"
 end
