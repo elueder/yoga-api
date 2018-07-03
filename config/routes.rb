@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :examples, except: %i[new edit]
   resources :users, only: %i[index show update]
   resources :poses, except: %i[new edit]
+  resources :sequence_poses, except: %i[new edit]
+  resources :sequences, except: %i[new edit]
 
   # Custom routes
   post '/sign-up' => 'users#signup'
