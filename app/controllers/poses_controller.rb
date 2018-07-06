@@ -41,7 +41,7 @@ class PosesController < ProtectedController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_pose
-      @pose = Pose.find(params[:id])
+      @pose = current_user.poses.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
